@@ -1,0 +1,4 @@
+{
+  "editor.formatOnSave": true,
+  "inlineFold.supportedLanguages": ["javascript", "typescript", "vue"],
+}
