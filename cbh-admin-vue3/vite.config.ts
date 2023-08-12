@@ -7,12 +7,29 @@ import { TDesignResolver } from "unplugin-vue-components/resolvers";
 import Unocss from "unocss/vite";
 import presetUno from "@unocss/preset-uno";
 import path from "path";
+import VueMacros from "unplugin-vue-macros/vite";
+import ReactivityTransform from "@vue-macros/reactivity-transform/vite";
+import VueDevTools from "vite-plugin-vue-devtools";
 
 export default defineConfig({
   plugins: [
+    VueDevTools(),
     vue(),
     VueJsx(),
+    // Vue macros
+    // VueMacros({
+    //   plugins: {
+    //     vue: vue(),
+    //     vueJsx: VueJsx(), // 如果需要
+    //   },
+    // }),
+    // ReactivityTransform(),
     AutoImport({
+      imports: [
+        "vue", // 导入内置的所有api
+        "vue-router",
+        "pinia",
+      ],
       resolvers: [
         TDesignResolver({
           library: "vue-next",
