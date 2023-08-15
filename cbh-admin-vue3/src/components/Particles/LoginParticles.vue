@@ -16,7 +16,7 @@ const particleOptions = {
       value: '#EEE'
     }
   },
-  fpsLimit: 120,
+  fpsLimit: 60,
   interactivity: {
     events: {
       onClick: {
@@ -40,7 +40,7 @@ const particleOptions = {
         quantity: 4
       },
       repulse: {
-        distance: 200,
+        distance: 100,
         duration: 0.4
       }
     }
@@ -60,8 +60,8 @@ const particleOptions = {
       direction: 'none',
       enable: true,
       outMode: 'bounce',
-      random: false,
-      speed: 6,
+      random: true,
+      speed: 4,
       straight: false
     },
     number: {
