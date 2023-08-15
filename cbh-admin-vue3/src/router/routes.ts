@@ -12,7 +12,7 @@ export const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/login",
-    component: () => import("@/views/Login/index.vue"),
+    component: () => import("@/pages/Login/index.vue"),
     meta: { title: "登录" },
   },
 ];
