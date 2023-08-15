@@ -19,8 +19,10 @@
     "ramda": "^0.29.0",
     "rxjs": "^7.8.1",
     "tdesign-vue-next": "^1.4.2",
+    "tsparticles": "^2.12.0",
     "vue": "^3.3.4",
-    "vue-router": "^4.2.4"
+    "vue-router": "^4.2.4",
+    "vue3-particles": "^2.12.0"
   },
   "devDependencies": {
     "@types/node": "^20.4.10",
