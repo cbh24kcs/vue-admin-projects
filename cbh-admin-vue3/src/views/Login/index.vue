@@ -45,7 +45,7 @@ import {LockOnIcon, UserIcon} from 'tdesign-icons-vue-next'
 </template>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 body {
   background-image: url("@/assets/img/bg.jpg");
   background-size: cover;
