@@ -6,7 +6,8 @@ import {LockOnIcon, UserIcon} from 'tdesign-icons-vue-next'
 
 
 <template>
-  <LoginParticles />
+  <!-- 登录页面粒子背景效果 -->
+  <LoginParticles/>
   <div class="wrap">
     <div class="container_form">
       <t-form labelWidth="0" class="form">
@@ -77,7 +78,7 @@ body {
   &_select {
     display: flex;
     justify-content: space-between;
-    width:100%;
+    width: 100%;
   }
 
   &_button {
