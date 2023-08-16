@@ -1,3 +1,5 @@
 node_modules
 dist
 .idea
+auto-imports.d.ts
+components.d.ts
