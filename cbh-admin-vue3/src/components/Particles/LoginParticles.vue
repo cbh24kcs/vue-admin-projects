@@ -16,7 +16,7 @@ const particleOptions = {
       value: "#EEE",
     },
   },
-  fpsLimit: 60,
+  fpsLimit: 120,
   interactivity: {
     events: {
       onClick: {
@@ -47,7 +47,7 @@ const particleOptions = {
   },
   particles: {
     color: {
-      value: "#666666",
+      value: "#00666666",
     },
     links: {
       color: "#cccccc",
@@ -61,7 +61,7 @@ const particleOptions = {
       enable: true,
       outMode: "bounce",
       random: true,
-      speed: 20,
+      speed: 8,
       straight: false,
     },
     number: {
@@ -69,7 +69,7 @@ const particleOptions = {
         enable: true,
         area: 800,
       },
-      value: 200,
+      value: 60,
     },
     opacity: {
       value: 0.5,
