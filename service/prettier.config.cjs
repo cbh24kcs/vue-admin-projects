@@ -80,7 +80,7 @@ module.exports = {
    "auto" - Maintain existing line endings (mixed values within one file are normalised by looking at what’s used after the first line)
   */
   // 默认 lf
-  endOfLine: 'lf',
+  endOfLine: 'auto',
 
   /*
     "auto" – Format embedded code if Prettier can automatically identify it.
