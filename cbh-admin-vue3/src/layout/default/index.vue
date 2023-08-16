@@ -1,13 +1,10 @@
 <script lang="ts"></script>
 
 <template>
-  <t-layout>
+  <t-layout class="layout-body">
     <t-aside>
-      <t-menu
-        theme="dark"
-        value="dashboard"
-      >
-      <template #logo>
+      <t-menu theme="dark" value="dashboard">
+        <template #logo>
           <img width="136" class="logo" src="https://www.tencent.com/img/index/menu_logo_hover.png" alt="logo" />
         </template>
         <t-menu-item value="dashboard">
@@ -89,14 +86,36 @@
         </template>
       </t-head-menu>
     </t-header> -->
-    <t-layout>
-      <t-layout>
-        <t-content>
-          <div>Content</div>
+    <t-layout class="right">
+      <t-layout class="main-content-wrapper">
+        <t-content class="main-content" style="">
+          <router-view></router-view>
         </t-content>
       </t-layout>
     </t-layout>
   </t-layout>
 </template>
 
-<style></style>
+<style lang="scss" scoped>
+.layout-body {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  .right {
+    .main-content-wrapper {
+      padding: 10px;
+
+      .main-content {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: #fff;
+      }
+    }
+  }
+}
+</style>
