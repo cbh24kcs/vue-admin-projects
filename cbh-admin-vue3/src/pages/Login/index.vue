@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import LoginParticles from "@/components/Particles/LoginParticles.vue";
 import {LockOnIcon, UserIcon} from 'tdesign-icons-vue-next'
+import instance from "@/utils/request.ts";
+import {APIS} from '@/api'
+import {useFetch} from "@vueuse/core";
+
+const handleLogin = async () => {
+
+  const { data } = useFetch(APIS.user.LOGIN).post().json()
+}
 
 </script>
 
@@ -8,6 +16,7 @@ import {LockOnIcon, UserIcon} from 'tdesign-icons-vue-next'
 <template>
   <!-- 登录页面粒子背景效果11 -->
   <LoginParticles/>
+
   <div class="wrap">
     <div class="container_form">
       <t-form labelWidth="0" class="form">
@@ -36,7 +45,7 @@ import {LockOnIcon, UserIcon} from 'tdesign-icons-vue-next'
         </t-form-item>
 
         <t-form-item>
-          <t-button class="item_button">登录</t-button>
+          <t-button class="item_button" @click="handleLogin">登录</t-button>
         </t-form-item>
       </t-form>
     </div>
@@ -46,14 +55,14 @@ import {LockOnIcon, UserIcon} from 'tdesign-icons-vue-next'
 
 
 <style lang="scss" scoped>
-body {
-  background-image: url("@/assets/img/bg.jpg");
-  background-size: cover;
-}
+// body {
+//   background-image: url("@/assets/img/bg.jpg");
+//   background-size: cover;
+// }
 
 .wrap {
   height: 100vh;
-  width: 700px;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,8 +72,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 500px;
-  height: 400px;
+  width: 600px;
+  height: 500px;
   box-shadow: 0 0 10px 0 #acacac;
   background-color: transparent;
   backdrop-filter: blur(3px);

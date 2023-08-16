@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import {loadFull} from "tsparticles";
+import { loadFull } from "tsparticles";
 
-const particlesInit = async engine => {
+const particlesInit = async (engine) => {
   await loadFull(engine);
 };
 
-const particlesLoaded = async container => {
+const particlesLoaded = async (container) => {
   console.log("Particles container loaded", container);
 };
 
@@ -13,77 +13,77 @@ const particleOptions = {
   background: {
     color: {
       //value: '#0d47a1'
-      value: '#EEE'
-    }
+      value: "#EEE",
+    },
   },
   fpsLimit: 60,
   interactivity: {
     events: {
       onClick: {
         enable: true,
-        mode: 'push'
+        mode: "push",
       },
       onHover: {
         enable: true,
-        mode: 'repulse'
+        mode: "repulse",
       },
-      resize: true
+      resize: true,
     },
     modes: {
       bubble: {
         distance: 400,
         duration: 2,
         opacity: 0.8,
-        size: 40
+        size: 40,
       },
       push: {
-        quantity: 4
+        quantity: 4,
       },
       repulse: {
         distance: 100,
-        duration: 0.4
-      }
-    }
+        duration: 0.4,
+      },
+    },
   },
   particles: {
     color: {
-      value: '#666666'
+      value: "#666666",
     },
     links: {
-      color: '#cccccc',
+      color: "#cccccc",
       distance: 150,
       enable: true,
       opacity: 0.5,
-      width: 1
+      width: 1,
     },
     move: {
-      direction: 'none',
+      direction: "none",
       enable: true,
-      outMode: 'bounce',
+      outMode: "bounce",
       random: true,
       speed: 4,
-      straight: false
+      straight: false,
     },
     number: {
       density: {
         enable: true,
-        area: 800
+        area: 800,
       },
-      value: 80
+      value: 80,
     },
     opacity: {
-      value: 0.5
+      value: 0.5,
     },
     shape: {
-      type: 'circle'
+      type: "circle",
     },
     size: {
       random: true,
-      value: 5
-    }
+      value: 5,
+    },
   },
-  detectRetina: true
-}
+  detectRetina: true,
+};
 </script>
 
 <template>
@@ -95,6 +95,4 @@ const particleOptions = {
   />
 </template>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

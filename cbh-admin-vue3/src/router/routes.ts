@@ -7,12 +7,12 @@ export const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/home",
-    component: () => import("@/views/Home/index.vue"),
+    component: () => import("@/layout/default/index.vue"),
     meta: { title: "首页" },
   },
   {
     path: "/login",
-    component: () => import("@/pages/Login/index.vue"),
+    component: () => import("@/pages/login/index.vue"),
     meta: { title: "登录" },
   },
 ];
