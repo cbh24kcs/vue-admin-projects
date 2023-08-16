@@ -29,6 +29,7 @@
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
     "@vue-macros/reactivity-transform": "^0.3.19",
+    "prettier": "^3.0.2",
     "sass": "^1.65.1",
     "typescript": "^5.0.2",
     "unocss": "^0.55.0",
