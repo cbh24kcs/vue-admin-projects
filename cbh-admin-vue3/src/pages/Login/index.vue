@@ -19,6 +19,9 @@ const handleLogin = async () => {
 
   <div class="wrap">
     <div class="container_form">
+      <div class="login-header">
+        <span>炳翰の管理系统</span>
+      </div>
       <t-form labelWidth="0" class="form">
         <t-form-item>
           <t-input placeholder="请输入用户名" size="large">
@@ -70,6 +73,7 @@ const handleLogin = async () => {
 
 .container_form {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 600px;
@@ -77,6 +81,15 @@ const handleLogin = async () => {
   box-shadow: 0 0 10px 0 #acacac;
   background-color: transparent;
   backdrop-filter: blur(3px);
+}
+
+.login-header {
+  margin-bottom: 80px;
+  span {
+    font-family: "楷体";
+    font-size: 42px;
+    font-weight: bold;
+  }
 }
 
 .form {
