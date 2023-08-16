@@ -7,15 +7,13 @@ import {useFetch} from "@vueuse/core";
 
 const handleLogin = async () => {
 
-  const { data } = useFetch(APIS.user.LOGIN).post().json()
+  const {data} = useFetch(APIS.user.LOGIN).post().json()
 }
-
 </script>
-
 
 <template>
   <!-- 登录页面粒子背景效果11 -->
-  <LoginParticles/>
+  <LoginParticles />
 
   <div class="wrap">
     <div class="container_form">
@@ -23,7 +21,7 @@ const handleLogin = async () => {
         <t-form-item>
           <t-input placeholder="请输入用户名" size="large">
             <template #prefix-icon>
-              <UserIcon/>
+              <UserIcon />
             </template>
           </t-input>
         </t-form-item>
@@ -31,7 +29,7 @@ const handleLogin = async () => {
         <t-form-item>
           <t-input type="password" placeholder="请输入密码" size="large">
             <template #prefix-icon>
-              <LockOnIcon/>
+              <LockOnIcon />
             </template>
           </t-input>
         </t-form-item>
@@ -41,7 +39,6 @@ const handleLogin = async () => {
             <t-checkbox>记住账号</t-checkbox>
             <t-link theme="primary">忘记密码</t-link>
           </div>
-
         </t-form-item>
 
         <t-form-item>
@@ -49,10 +46,8 @@ const handleLogin = async () => {
         </t-form-item>
       </t-form>
     </div>
-
   </div>
 </template>
-
 
 <style lang="scss" scoped>
 // body {
@@ -94,8 +89,4 @@ const handleLogin = async () => {
     width: 100%;
   }
 }
-
-
 </style>
-
-
