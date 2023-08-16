@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import LoginParticles from "@/components/Particles/LoginParticles.vue";
 import {LockOnIcon, UserIcon} from 'tdesign-icons-vue-next'
+import instance from "@/utils/request.ts";
+import {APIS} from '@/api'
+import {useFetch} from "@vueuse/core";
+
+const handleLogin = async () => {
+
+  const { data } = useFetch(APIS.user.LOGIN).post().json()
+}
 
 </script>
 
@@ -36,7 +44,7 @@ import {LockOnIcon, UserIcon} from 'tdesign-icons-vue-next'
         </t-form-item>
 
         <t-form-item>
-          <t-button class="item_button">登录</t-button>
+          <t-button class="item_button" @click="handleLogin">登录</t-button>
         </t-form-item>
       </t-form>
     </div>
