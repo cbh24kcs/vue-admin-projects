@@ -8,7 +8,7 @@ export const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     component: () => import('@/pages/login/index.vue'),
-    meta: { title: '登录' },
+    meta: { title: '登录', code: '',  premissionCode: ''},
   },
   {
     path: '/',

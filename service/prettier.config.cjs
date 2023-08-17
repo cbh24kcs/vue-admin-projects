@@ -1,6 +1,6 @@
 module.exports = {
   // 打印宽度，默认80
-  printWidth: 300,
+  printWidth: 120,
 
   // tab键宽度，默认2
   tabWidth: 2,
