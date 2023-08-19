@@ -13,12 +13,13 @@ const handleLogin = async () => {
 
 <template>
   <!-- 登录页面粒子背景效果11 -->
-  <LoginParticles />
+  <!-- <LoginParticles /> -->
 
   <div class="wrap">
-    <div class="container_form">
-      <div class="login-header">
-        <span>炳翰の管理系统</span>
+    <div class="container">
+      <div class="container_title">
+        <div>登录到</div>
+        <div>CBH OA SYSTEM</div>
       </div>
       <t-form labelWidth="0" class="form">
         <t-form-item>
@@ -53,37 +54,35 @@ const handleLogin = async () => {
 </template>
 
 <style lang="scss" scoped>
- //body {
- //  background-image: url("@/assets/img/bg.jpg");
- //  background-size: cover;
- //}
+// body {
+
+// }
 
 .wrap {
   height: 100vh;
   width: 100vw;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  background-image: url("@/assets/img/bg1.jpg");
+  background-size: cover;
 }
 
-.container_form {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 600px;
-  height: 500px;
+  padding:25px;
   box-shadow: 0 0 10px 0 #acacac;
   background-color: transparent;
-  backdrop-filter: blur(3px);
-}
-
-.login-header {
-  margin-bottom: 80px;
-  span {
-    font-family: "楷体";
-    font-size: 42px;
-    font-weight: bold;
+  backdrop-filter: blur(8px);
+  &_title {
+    width:400px;
+    margin-bottom: 60px;
+    div {
+      font-family: "Microsoft YaHei";
+      font-size: 36px;
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-<script lang="ts"></script>
+<script setup lang="ts"></script>
 
 <template>
   <t-layout class="layout-body">
@@ -88,6 +88,7 @@
     </t-header> -->
     <t-layout class="right">
       <t-layout class="main-content-wrapper">
+        
         <t-content class="main-content" style="">
           <router-view></router-view>
         </t-content>
