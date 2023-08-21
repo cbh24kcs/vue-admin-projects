@@ -13,8 +13,9 @@ const particleOptions = {
   background: {
     color: {
       //value: '#0d47a1'
-      value: "#EEE",
+      value: "#EEEEEE",
     },
+    opacity: 0.1,
   },
   fpsLimit: 120,
   interactivity: {
@@ -79,7 +80,7 @@ const particleOptions = {
     },
     size: {
       random: true,
-      value: 5,
+      value: 2,
     },
   },
   detectRetina: true,
