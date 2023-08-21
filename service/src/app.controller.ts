@@ -1,5 +1,5 @@
-import { Controller, Get, Post } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get, Post } from "@nestjs/common";
+import { AppService } from "./app.service";
 
 @Controller()
 export class AppController {
@@ -10,11 +10,10 @@ export class AppController {
     return this.appService.getHello();
   }
 
-
   /*
       应用
       目录
-      菜单
+      菜单s
       按钮
       功能
       接口
@@ -25,16 +24,14 @@ export class AppController {
     return {
       data: [
         {
-          id: '1',
-          title: '系统管理',
-          children: [
-
-          ]
+          id: "1",
+          title: "系统管理",
+          children: [],
         },
         {
-          id: '2',
-        }
-      ]
-    }
+          id: "2",
+        },
+      ],
+    };
   }
 }

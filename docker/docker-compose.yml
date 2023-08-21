@@ -1,0 +1,27 @@
+version: '3.3'
+
+# 配置docker容器服务
+services:
+  db: # 容器名称
+    image: mysql:5.7 # 容器使用的镜像
+    restart: always
+    ports: # 端口映射   外部端口:内部端口
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    volumes:
+      # MySQL日志
+      - ./volumes/mysql57/log:/var/log/mysql
+      # MySQL数据存储
+      - ./volumes/mysql57/data:/var/lib/mysql
+      # MySQL配置目录
+      - ./volumes/mysql57/conf:/etc/mysql/conf.d
+  
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    links:
+      - db
+
