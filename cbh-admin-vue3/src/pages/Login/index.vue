@@ -54,15 +54,11 @@ const handleLogin = async () => {
 </template>
 
 <style lang="scss" scoped>
-// body {
-
-// }
-
 .wrap {
   height: 100vh;
   width: 100vw;
   display: flex;
-  background-image: url("@/assets/img/bg");
+  background-image: url("@/assets/img/bg_login.jpg");
   background-size: cover;
 }
 
