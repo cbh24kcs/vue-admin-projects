@@ -62,7 +62,7 @@ const handleLogin = async () => {
   height: 100vh;
   width: 100vw;
   display: flex;
-  background-image: url("@/assets/img/bg1.jpg");
+  background-image: url("@/assets/img/bg");
   background-size: cover;
 }
 
