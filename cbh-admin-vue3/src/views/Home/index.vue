@@ -2,6 +2,7 @@
 import {set, get, keys, values, setMany, getMany} from 'idb-keyval'
 const handleClick = () => {
   set('user', {name: '张三',age: 18})
+  console.log("测试一下")
 }
 </script>
 
