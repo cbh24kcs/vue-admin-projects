@@ -9,9 +9,9 @@ export const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.meta.title) {
-    useTitle(to.meta.title + " | 陈哥の管理系统");
+    useTitle(to.meta.title + " | 前端任务管理系统");
   } else {
-    useTitle("陈哥の管理系统");
+    useTitle("前端任务管理系统");
   }
 
   next();
