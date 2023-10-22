@@ -15,6 +15,7 @@ export class UserController {
     });
   }
 
+
   @Get("/page001")
   @Render("user/001.hbs")
   async page001() {
@@ -23,4 +24,5 @@ export class UserController {
       users,
     };
   }
+
 }

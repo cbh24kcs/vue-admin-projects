@@ -1,17 +1,18 @@
-import { Module } from "@nestjs/common";
-import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
-import { TypeOrmModule } from "@nestjs/typeorm";
-import { UserModule } from "./user/user.module";
+import {Module} from "@nestjs/common";
+import {AppController} from "./app.controller";
+import {AppService} from "./app.service";
+import {TypeOrmModule} from "@nestjs/typeorm";
+import {UserModule} from "./user/user.module";
+import {MenuModule} from "./menu/menu.module";
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: "mysql",
-      host: "127.0.0.1",
-      port: 3306,
+      host: "wbytts.e3.luyouxia.net",
+      port: 10396,
       username: "root",
-      password: "123456",
+      password: "root",
       database: "cbh-admin",
       synchronize: true, // 同步
       logging: true, // 打印日志
@@ -24,8 +25,10 @@ import { UserModule } from "./user/user.module";
       },
     }),
     UserModule,
+    MenuModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+}
