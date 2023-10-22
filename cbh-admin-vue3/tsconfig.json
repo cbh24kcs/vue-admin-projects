@@ -23,15 +23,26 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    "types": [
+      "vite/client",
+      //xxxx
+      "unplugin-vue-macros/macros-global.d.ts",
+      "node_modules/tdesign-vue-next/global.d.ts",
+      "vite/auto-imports.d.ts",
+      "vite/components.d.ts"
+    ]
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
+    // asdasdasd
     "src/**/*.vue",
-    "node_modules/tdesign-vue-next/global.d.ts",
-    "./auto-imports.d.ts"
+    "vite/**/*.d.ts",
+    "types/**/*.ts",
+    "node_modules/tdesign-vue-next/global.d.ts"
   ],
+  // "exclude": ["node_modules", "dist"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
