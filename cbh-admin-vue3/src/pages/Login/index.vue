@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import LoginParticles from "@/components/Particles/LoginParticles.vue";
-import {LockOnIcon, UserIcon} from 'tdesign-icons-vue-next'
+import { LockOnIcon, UserIcon } from 'tdesign-icons-vue-next'
 import instance from "@/utils/request.ts";
-import {APIS} from '@/api'
-import {useFetch} from "@vueuse/core";
+import { APIS } from '@/api'
+import { useFetch } from "@vueuse/core";
 
 const handleLogin = async () => {
 
-  const {data} = useFetch(APIS.user.LOGIN).post().json()
+  const { data } = useFetch(APIS.user.LOGIN).post().json()
 }
+
+console.log(import.meta.env.VITE_BASE_API)
 </script>
 
 <template>
@@ -19,7 +21,7 @@ const handleLogin = async () => {
     <div class="container">
       <div class="container_title">
         <div>登录到</div>
-        <div>CBH OA SYSTEM</div>
+        <div>DPX JIRA SYSTEM</div>
       </div>
       <t-form labelWidth="0" class="form">
         <t-form-item>
@@ -68,13 +70,15 @@ const handleLogin = async () => {
   align-items: center;
   justify-content: center;
   width: 600px;
-  padding:25px;
+  padding: 25px;
   box-shadow: 0 0 10px 0 #acacac;
   background-color: transparent;
   backdrop-filter: blur(8px);
+
   &_title {
-    width:400px;
+    width: 400px;
     margin-bottom: 60px;
+
     div {
       font-family: "Microsoft YaHei";
       font-size: 36px;
