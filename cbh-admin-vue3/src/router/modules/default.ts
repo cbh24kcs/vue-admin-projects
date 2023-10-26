@@ -1,4 +1,5 @@
 import layout from "@/layout/default/index.vue"
+import { RouteRecordRaw } from 'vue-router';
 
 export default [
     {
@@ -7,7 +8,7 @@ export default [
     },
     {
         path: '/login',
-        component: () => import('@/pages/Login/index.vue'),
+        component: () => import('@/pages/login/index.vue'),
         meta: { title: '登录', code: '', premissionCode: '' },
     },
     {

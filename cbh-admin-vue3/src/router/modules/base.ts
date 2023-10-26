@@ -7,7 +7,7 @@ export default <Array<RouteRecordRaw>>[
     },
     {
         path: '/login',
-        component: () => import('@/pages/Login/index.vue'),
+        component: () => import('@/pages/login/index.vue'),
         meta: { title: '登录', code: '', premissionCode: '' },
     },
     {
