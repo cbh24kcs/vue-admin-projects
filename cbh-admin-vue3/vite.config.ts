@@ -19,7 +19,7 @@ import VueDevTools from 'vite-plugin-vue-devtools';
 export default defineConfig(({ command, mode }) => {
   // 根据当前工作目录中的 `mode` 加载 .env 文件
   // 设置第三个参数为 '' 来加载所有环境变量，而不管是否有 `VITE_` 前缀。
-  const { VITE_BASE_API, VITE_SERVER } = loadEnv(mode, process.cwd())
+  const { VITE_APP_BASE_API, VITE_SERVER } = loadEnv(mode, process.cwd())
 
   return {
     plugins: [
@@ -69,16 +69,11 @@ export default defineConfig(({ command, mode }) => {
     },
     server: {
       proxy: {
-        [VITE_BASE_API]: {
+        [VITE_APP_BASE_API]: {
           target: VITE_SERVER,
           changeOrigin: true,
           rewrite: p => p.replace(/^\/api/, ''),
         },
-        // '/by-api': {
-        //   target: 'http://wbytts.w1.luyouxia.net',
-        //   changeOrigin: true,
-        //   rewrite: p => p.replace(/^\/by-api/, ''),
-        // },
       },
     },
   }
