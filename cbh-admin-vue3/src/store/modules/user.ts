@@ -16,6 +16,9 @@ export const useUserStore = defineStore("user", {
                 console.log(res)
             }
         },
+        // async getUserInfo(params){
+        //     const res = awiat 
+        // }
 
     },
     persist: {

@@ -2,7 +2,7 @@
 // import LoginParticles from "@/components/Particles/LoginParticles.vue";
 import { LockOnIcon, UserIcon } from 'tdesign-icons-vue-next'
 
-import { useUserStore } from "@/store/module/user"
+import { useUserStore } from "@/store"
 
 const form = ref({
   account: "",
