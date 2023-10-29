@@ -4,9 +4,15 @@ import { LockOnIcon, UserIcon } from 'tdesign-icons-vue-next'
 
 import { useUserStore } from "@/store/module/user"
 
+const form = ref({
+  account: "",
+  password: "",
+})
+
 const userStore = useUserStore();
 
 const handleLogin = async () => {
+  await userStore.login(form.value)
   // const res = await login({ account: "admin", password: "123" });
 }
 
@@ -24,7 +30,7 @@ const handleLogin = async () => {
       </div>
       <t-form labelWidth="0" class="form">
         <t-form-item>
-          <t-input placeholder="请输入用户名" size="large">
+          <t-input v-model="form.account" placeholder="请输入用户名" size="large">
             <template #prefix-icon>
               <UserIcon />
             </template>
@@ -32,7 +38,7 @@ const handleLogin = async () => {
         </t-form-item>
 
         <t-form-item>
-          <t-input type="password" placeholder="请输入密码" size="large">
+          <t-input v-model="form.password" type="password" placeholder="请输入密码" size="large">
             <template #prefix-icon>
               <LockOnIcon />
             </template>
