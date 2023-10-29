@@ -2,15 +2,16 @@
 import LoginParticles from "@/components/Particles/LoginParticles.vue";
 import { LockOnIcon, UserIcon } from 'tdesign-icons-vue-next'
 import instance from "@/utils/request.ts";
-import { APIS } from '@/api'
-import { useFetch } from "@vueuse/core";
+import { login } from "@/api/user/user"
+// import { APIS } from '@/api'
+// import { useFetch } from "@vueuse/core";
 
 const handleLogin = async () => {
+  const res = await login({ account: "admin", password: "123" });
 
-  const { data } = useFetch(APIS.user.LOGIN).post().json()
+  // const { data } = useFetch(APIS.user.LOGIN).post().json()
 }
 
-console.log(import.meta.env.VITE_BASE_API)
 </script>
 
 <template>
