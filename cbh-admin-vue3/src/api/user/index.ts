@@ -1,4 +1,4 @@
-import { loginParams } from "./type/userType"
+import { loginParams } from "./type"
 import request from "@/utils/request"
 
 const api = {
@@ -7,5 +7,5 @@ const api = {
 }
 
 export function login(params: loginParams) {
-  return request.post(api.login, params )
+  return request.post(api.login, params)
 }

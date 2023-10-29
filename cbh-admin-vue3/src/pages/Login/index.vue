@@ -1,15 +1,13 @@
 <script setup lang="ts">
-import LoginParticles from "@/components/Particles/LoginParticles.vue";
+// import LoginParticles from "@/components/Particles/LoginParticles.vue";
 import { LockOnIcon, UserIcon } from 'tdesign-icons-vue-next'
-import instance from "@/utils/request.ts";
-import { login } from "@/api/user/user"
-// import { APIS } from '@/api'
-// import { useFetch } from "@vueuse/core";
+
+import { useUserStore } from "@/store/module/user"
+
+const userStore = useUserStore();
 
 const handleLogin = async () => {
-  const res = await login({ account: "admin", password: "123" });
-
-  // const { data } = useFetch(APIS.user.LOGIN).post().json()
+  // const res = await login({ account: "admin", password: "123" });
 }
 
 </script>
@@ -103,3 +101,4 @@ const handleLogin = async () => {
   }
 }
 </style>
+@/api/user
