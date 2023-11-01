@@ -1,6 +1,9 @@
 <script setup lang="ts">
 // import LoginParticles from "@/components/Particles/LoginParticles.vue";
 import { LockOnIcon, UserIcon } from 'tdesign-icons-vue-next'
+import type { SubmitContext, MessageOptions } from 'tdesign-vue-next';
+
+import { MessagePlugin } from 'tdesign-vue-next';
 
 import { useUserStore } from "@/store"
 
@@ -11,10 +14,24 @@ const form = ref({
 
 const userStore = useUserStore();
 
-const handleLogin = async () => {
-  await userStore.login(form.value)
-  // const res = await login({ account: "admin", password: "123" });
+const router = useRouter()
+
+const onSubmit = async (context: SubmitContext) => {
+  if (context.validateResult) {
+    try {
+      await userStore.login(form.value)
+      MessagePlugin.success('登录成功');
+      router.push("/")
+    } catch (e) {
+      console.log(e);
+      MessagePlugin.error({
+        content: "123",
+        duration: 0,
+      })
+    }
+  }
 }
+
 
 </script>
 
@@ -28,7 +45,7 @@ const handleLogin = async () => {
         <div>登录到</div>
         <div>DPX JIRA SYSTEM</div>
       </div>
-      <t-form labelWidth="0" class="form">
+      <t-form labelWidth="0" class="form" @submit="onSubmit">
         <t-form-item>
           <t-input v-model="form.account" placeholder="请输入用户名" size="large">
             <template #prefix-icon>
@@ -53,7 +70,7 @@ const handleLogin = async () => {
         </t-form-item>
 
         <t-form-item>
-          <t-button class="item_button" @click="handleLogin">登录</t-button>
+          <t-button class="item_button" type="submit">登录</t-button>
         </t-form-item>
       </t-form>
     </div>
@@ -107,4 +124,3 @@ const handleLogin = async () => {
   }
 }
 </style>
-@/api/user

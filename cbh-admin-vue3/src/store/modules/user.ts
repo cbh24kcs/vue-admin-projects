@@ -13,12 +13,10 @@ export const useUserStore = defineStore("user", {
             const res = await login(params) as any
             if (res.code == 0) {
                 this.token = res.data.token
-                console.log(res)
+            } else {
+                throw res
             }
         },
-        // async getUserInfo(params){
-        //     const res = awiat 
-        // }
 
     },
     persist: {
