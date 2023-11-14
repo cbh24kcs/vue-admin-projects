@@ -41,7 +41,7 @@ import NavBar from "../component/navbar.vue"
 
   .right {
     .main-content-wrapper {
-      padding: 10px;
+      padding: 25px;
 
       .main-content {
         border: 1px solid #ddd;
