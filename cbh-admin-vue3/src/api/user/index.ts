@@ -8,13 +8,16 @@ const api = {
 };
 
 export function login(params: loginParams) {
-  interface LoginResponse {
+  interface DataStructure {
     token: string;
   }
 
-  return request.post<loginParams, LoginResponse>(api.login, params);
+  return request.post<loginParams, DataStructure>(api.login, params);
 }
 
-export function getUserInfo(): any {
-  return request.post(api.getUserInfo);
+export function getUserInfo() {
+  interface DataStructure {
+    token: string;
+  }
+  return request.post<never, DataStructure>(api.getUserInfo);
 }

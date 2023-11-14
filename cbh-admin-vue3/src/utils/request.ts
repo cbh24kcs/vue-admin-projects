@@ -37,10 +37,10 @@ export default instance;
 
 // code\message\data
 
-interface IResponse<T> {
+interface ResponseStructure<T> {
   code: number;
-  data: T;
   message: string;
+  data: T;
 }
 
 class Request {
@@ -52,7 +52,7 @@ class Request {
 
   get() {}
 
-  post<A, B>(url: string, params: A): Promise<IResponse<B>> {
+  post<RequestParams, DataStructure>(url: string, params?: RequestParams): Promise<ResponseStructure<DataStructure>> {
     return this.instance.post(url, params);
   }
 }
