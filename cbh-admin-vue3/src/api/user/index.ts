@@ -1,5 +1,5 @@
 import { loginParams } from './type';
-import request from '@/utils/request';
+import { request } from '@/utils/request';
 
 const api = {
   login: '/login', //登录
@@ -7,8 +7,12 @@ const api = {
   userList: '/user/list',
 };
 
-export function login(params: loginParams): any {
-  return request.post(api.login, params);
+export function login(params: loginParams) {
+  interface LoginResponse {
+    token: string;
+  }
+
+  return request.post<loginParams, LoginResponse>(api.login, params);
 }
 
 export function getUserInfo(): any {

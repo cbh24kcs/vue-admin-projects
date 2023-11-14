@@ -7,9 +7,7 @@ const userStore = useUserStore()
 
 
 //前往个人中心
-const toPersonalCenter = () => {
-
-}
+const toPersonalCenter = () => {}
 
 //登出
 const handleLogout = () => {

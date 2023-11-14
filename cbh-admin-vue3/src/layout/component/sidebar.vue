@@ -3,7 +3,7 @@ import SidebarItem from "./sidebarItem.vue"
 </script>
 
 <template>
-  <t-menu theme="dark" value="dashboard">
+  <t-menu theme="light" value="dashboard">
     <SidebarItem />
     <t-menu-item value="dashboard">
       <template #icon>
