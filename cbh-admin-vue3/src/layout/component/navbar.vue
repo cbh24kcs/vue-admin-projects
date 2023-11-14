@@ -1,6 +1,8 @@
 <script setup>
 import { UserCircleIcon, ChevronDownIcon } from 'tdesign-icons-vue-next';
 import { useUserStore } from "@/store"
+import { MessagePlugin } from 'tdesign-vue-next';
+
 
 const router = useRouter()
 const userStore = useUserStore()
@@ -12,6 +14,7 @@ const toPersonalCenter = () => {}
 //登出
 const handleLogout = () => {
     userStore.logout()
+    MessagePlugin.success("已退出")
     router.push({ path: "/login" })
 }
 
