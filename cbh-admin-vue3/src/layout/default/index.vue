@@ -1,47 +1,49 @@
 <script setup lang="ts">
 import Sidebar from "../component/sidebar.vue"
+const options = ref([])
+const clickHandler = () => { }
 </script>
 
 <template>
   <t-layout class="layout-body">
-    <t-aside>
-      <Sidebar />
-    </t-aside>
-    <!-- <t-header>
+    <t-header class="layout__header">
       <t-head-menu value="item1" height="120px">
         <template #logo>
-          <img
-            width="136"
-            class="logo"
-            src="https://www.tencent.com/img/index/menu_logo_hover.png"
-            alt="logo"
-          />
+          <img width="136" class="logo" src="https://www.tencent.com/img/index/menu_logo_hover.png" alt="logo" />
         </template>
         <template #operations>
-          <a href="javascript:;"
-            ><t-icon class="t-menu__operations-icon" name="search"
-          /></a>
-          <a href="javascript:;"
-            ><t-icon class="t-menu__operations-icon" name="notification-filled"
-          /></a>
-          <a href="javascript:;"
-            ><t-icon class="t-menu__operations-icon" name="home"
-          /></a>
+          <!-- <a href="javascript:;"><t-icon class="t-menu__operations-icon" name="search" /></a>
+          <a href="javascript:;"><t-icon class="t-menu__operations-icon" name="notification-filled" /></a>
+          <a href="javascript:;"><t-icon class="t-menu__operations-icon" name="home" /></a> -->
+          <t-dropdown :options="options" trigger="click" @click="clickHandler">
+            <t-space>
+              <t-button variant="text">
+                更多
+                <template #suffix> <t-icon name="chevron-down" size="16" /></template>
+              </t-button>
+            </t-space>
+          </t-dropdown>
         </template>
       </t-head-menu>
-    </t-header> -->
-    <t-layout class="right">
-      <t-layout class="main-content-wrapper">
-        <t-content class="main-content" style="">
-          <router-view></router-view>
-        </t-content>
+    </t-header>
+
+    <t-layout>
+      <t-aside>
+        <Sidebar />
+      </t-aside>
+
+      <t-layout class="right">
+        <t-layout class="main-content-wrapper">
+          <t-content class="main-content" style="">
+            <router-view></router-view>
+          </t-content>
+        </t-layout>
       </t-layout>
     </t-layout>
+
   </t-layout>
 </template>
-<script setup>
 
-</script>
 <style lang="scss" scoped>
 .layout-body {
   width: 100vw;
@@ -62,6 +64,12 @@ import Sidebar from "../component/sidebar.vue"
         background-color: #fff;
       }
     }
+  }
+}
+
+.layout {
+  &__header {
+    border: 1px solid #ddd;
   }
 }
 </style>
