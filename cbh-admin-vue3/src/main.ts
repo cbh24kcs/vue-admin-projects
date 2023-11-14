@@ -4,6 +4,7 @@ import 'uno.css';
 import { router } from './router';
 import { store } from './store';
 import VueParticles from 'vue3-particles';
+import './permission';
 
 import App from './App.vue';
 
