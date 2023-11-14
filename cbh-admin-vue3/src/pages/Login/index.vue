@@ -2,32 +2,29 @@
 // import LoginParticles from "@/components/Particles/LoginParticles.vue";
 import { LockOnIcon, UserIcon } from 'tdesign-icons-vue-next'
 import type { SubmitContext, MessageOptions } from 'tdesign-vue-next';
-
 import { MessagePlugin } from 'tdesign-vue-next';
-
 import { useUserStore } from "@/store"
+
+const userStore = useUserStore();
+const router = useRouter()
+const route = useRoute();
 
 const form = ref({
   account: "",
   password: "",
 })
 
-const userStore = useUserStore();
-
-const router = useRouter()
 
 const onSubmit = async (context: SubmitContext) => {
   if (context.validateResult) {
     try {
       await userStore.login(form.value)
       MessagePlugin.success('登录成功');
-      router.push("/")
+      const redirect = route.query.redirect as string
+      const pushUrl = redirect ? decodeURIComponent(redirect) : '/home'
+      router.push({ path: pushUrl })
     } catch (e) {
-      console.log(e);
-      MessagePlugin.error({
-        content: "123",
-        duration: 0,
-      })
+      MessagePlugin.error(e.msg)
     }
   }
 }
