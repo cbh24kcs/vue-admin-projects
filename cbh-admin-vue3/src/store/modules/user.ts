@@ -24,6 +24,10 @@ export const useUserStore = defineStore('user', {
         throw res;
       }
     },
+    logout() {
+      this.token = '';
+      this.userInfo = {};
+    },
   },
   persist: {
     key: 'store',
