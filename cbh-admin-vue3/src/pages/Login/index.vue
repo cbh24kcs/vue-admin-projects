@@ -19,6 +19,7 @@ const onSubmit = async (context: SubmitContext) => {
   if (context.validateResult) {
     try {
       await userStore.login(form.value)
+      await userStore.getUserInfo()
       MessagePlugin.success('登录成功');
       const redirect = route.query.redirect as string
       const pushUrl = redirect ? decodeURIComponent(redirect) : '/home'

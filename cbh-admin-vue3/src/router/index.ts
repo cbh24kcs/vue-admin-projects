@@ -24,9 +24,9 @@ function mapModulesRoutes(modules: Record<string, any>): Array<RouteRecordRaw> {
 const allRoutes = [...mapModulesRoutes(otherModules), ...mapModulesRoutes(defaultModules)]
 
 
+
+
 export const router = createRouter({
   history: createWebHashHistory(),
   routes: allRoutes,
 });
-
-
