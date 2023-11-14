@@ -1,13 +1,14 @@
 <script setup lang="tsx">
 import type { MessageConfig } from "tdesign-vue-next"
+
+//全局特性配置
 const globalConfig = {
-  size: 'large',
-  message: {
-    style: {
-      width: "700px",
-      height: "50px"
-    }
-  },
+  // message: {
+  //   style: {
+  //     width: "700px",
+  //     height: "80px"
+  //   }
+  // },
 }
 </script>
 
