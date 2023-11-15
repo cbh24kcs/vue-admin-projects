@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from 'axios';
+import axios from 'axios';
 import { useUserStore } from '@/store';
 
 const instance = axios.create({
@@ -35,26 +35,4 @@ instance.interceptors.response.use(
 
 export default instance;
 
-// code\message\data
 
-interface ResponseStructure<T> {
-  code: number;
-  message: string;
-  data: T;
-}
-
-class Request {
-  private instance: AxiosInstance;
-
-  constructor(instance) {
-    this.instance = instance;
-  }
-
-  get() {}
-
-  post<T, U>(url: string, params?: T): Promise<ResponseStructure<U>> {
-    return this.instance.post(url, params);
-  }
-}
-
-export const request = new Request(instance);

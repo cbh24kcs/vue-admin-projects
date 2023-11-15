@@ -2,8 +2,6 @@
 import Sidebar from "../component/sidebar.vue"
 import NavBar from "../component/navbar.vue"
 
-
-
 </script>
 
 <template>
