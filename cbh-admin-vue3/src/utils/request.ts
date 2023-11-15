@@ -52,7 +52,7 @@ class Request {
 
   get() {}
 
-  post<RequestParams, DataStructure>(url: string, params?: RequestParams): Promise<ResponseStructure<DataStructure>> {
+  post<T, U>(url: string, params?: T): Promise<ResponseStructure<U>> {
     return this.instance.post(url, params);
   }
 }
