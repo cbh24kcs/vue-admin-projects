@@ -16,7 +16,7 @@ class Request {
 
   get() {}
 
-  post<T, U>(url: string, params?: T): Promise<ResponseStructure<U>> {
+  post<T>(url: string, params?: object): Promise<ResponseStructure<T>> {
     return this.instance.post(url, params);
   }
 }

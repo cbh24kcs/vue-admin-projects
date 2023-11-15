@@ -12,12 +12,12 @@ export function login(params: loginParams) {
     token: string;
   }
 
-  return request.post<loginParams, ResData>(api.login, params);
+  return request.post<ResData>(api.login, params);
 }
 
 export function getUserInfo() {
   interface ResData {
     token: string;
   }
-  return request.post<never, ResData>(api.getUserInfo);
+  return request.post<ResData>(api.getUserInfo);
 }
