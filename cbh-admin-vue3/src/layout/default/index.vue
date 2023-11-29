@@ -2,8 +2,6 @@
 import Sidebar from "../component/sidebar.vue"
 import NavBar from "../component/navbar.vue"
 
-
-
 </script>
 
 <template>
@@ -41,7 +39,7 @@ import NavBar from "../component/navbar.vue"
 
   .right {
     .main-content-wrapper {
-      padding: 25px;
+      padding: 15px;
 
       .main-content {
         border: 1px solid #ddd;

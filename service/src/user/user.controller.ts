@@ -21,13 +21,4 @@ export class UserController {
   }
 
 
-  @Get("/page001")
-  @Render("user/001.hbs")
-  async page001() {
-    let users = await this.userRepository.find();
-    return {
-      users,
-    };
-  }
-
 }

@@ -9,31 +9,21 @@ import {
   JoinColumn,
   JoinTable,
 } from "typeorm";
-import { UserProfile } from "./user-profile.entity";
-import { UserLog } from "./user-log.entity";
-import { Role } from "./role.entity";
 
 @Entity({})
 export class User {
   @PrimaryGeneratedColumn({ comment: "主键" })
   id: number;
 
-  @Column({ comment: "用户名" })
-  name: string;
+  @Column({ comment: "账户" })
+  account: string;
 
-  @Column({ comment: "年龄" })
-  age: number;
+  @Column({ comment: "密码" })
+  password: number;
 
-  @OneToOne(() => UserProfile, profile => profile.user)
-  @JoinColumn({ name: "user_profile_id" })
-  profile: UserProfile;
+  @Column({ comment: "密码" })
+  lock: number;
 
-  @OneToMany(() => UserLog, log => log.user)
-  logs: UserLog[];
-
-  @ManyToMany(() => Role, role => role.users)
-  @JoinTable()
-  roles: Role[];
 
   // teams:
 }

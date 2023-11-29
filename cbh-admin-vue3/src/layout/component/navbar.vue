@@ -9,7 +9,7 @@ const userStore = useUserStore()
 
 
 //前往个人中心
-const toPersonalCenter = () => {}
+const toPersonalCenter = () => { }
 
 //登出
 const handleLogout = () => {
@@ -22,7 +22,7 @@ const handleLogout = () => {
 
 
 <template>
-    <t-head-menu value="item1" height="120px">
+    <t-head-menu>
         <template #logo>
             <img width="136" class="logo" src="https://www.tencent.com/img/index/menu_logo_hover.png" alt="logo" />
         </template>
