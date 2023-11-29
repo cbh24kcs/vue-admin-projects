@@ -30,8 +30,6 @@ async function bootstrap() {
   await app.listen(port, () => {
     console.log(`服务启动成功, ${host}:${port}`);
   });
-
-  console.log("test");
 }
 
 bootstrap();

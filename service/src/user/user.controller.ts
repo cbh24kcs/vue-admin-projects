@@ -8,21 +8,6 @@ export class UserController {
   @InjectRepository(User)
   private userRepository: Repository<User>;
 
-  @Get("/list")
-  async list() {
-    return await this.userRepository.find({
-      relations: ["profile"],
-    });
-  }
 
-
-  @Get("/page001")
-  @Render("user/001.hbs")
-  async page001() {
-    let users = await this.userRepository.find();
-    return {
-      users,
-    };
-  }
 
 }
