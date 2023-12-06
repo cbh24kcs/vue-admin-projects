@@ -19,10 +19,8 @@ export class User {
   account: string;
 
   @Column({ comment: "密码" })
-  password: number;
+  password: string;
 
   @Column({ comment: "密码" })
   lock: number;
-
-
 }

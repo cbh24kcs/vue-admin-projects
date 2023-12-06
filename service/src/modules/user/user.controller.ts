@@ -19,13 +19,13 @@ export class UserController {
   async login(@Body() params: UserLoginDto) {
     const result = await this.userService.login(params);
     if (result) {
+      return "登录成功"
       // 配置token
-      const token = await this.jwtService.signAsync({
-        user: {
-          id: result.id,
-        },
-      });
-      console.log(token)
+      // const token = await this.jwtService.signAsync({
+      //   user: {
+      //     id: result.id,
+      //   },
+      // });
     }
   }
 }
