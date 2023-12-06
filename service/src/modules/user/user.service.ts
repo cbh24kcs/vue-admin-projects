@@ -23,6 +23,7 @@ export class UserService {
     // if(result.password){
 
     // }
+    console.log("123123213",result)
     return result
   }
 

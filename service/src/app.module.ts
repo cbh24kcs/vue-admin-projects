@@ -4,6 +4,7 @@ import { AppService } from "./app.service";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { UserModule } from "./modules/user/user.module";
 import { MenuModule } from "./modules/menu/menu.module";
+import { JwtModule } from "@nestjs/jwt";
 
 @Module({
   imports: [
@@ -22,6 +23,13 @@ import { MenuModule } from "./modules/menu/menu.module";
       extra: {
         authPlugin: "sha256_password",
         idleTimeoutMillis: 30 * 1000,
+      },
+    }),
+    JwtModule.register({
+      global: true, //全局模块
+      secret: "dpx_cbh24kcs_demo", // 密钥
+      signOptions: {
+        expiresIn: "7d", // token有效期
       },
     }),
     UserModule,

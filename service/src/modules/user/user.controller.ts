@@ -4,7 +4,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { UserLoginDto } from "./dto/login-user.dto";
 import { UserService } from "./user.service";
 import { JwtService } from "@nestjs/jwt";
-import { log } from "console";
+
 
 @Controller("user")
 export class UserController {
@@ -15,17 +15,17 @@ export class UserController {
   @Inject()
   private jwtService: JwtService;
 
-  private log: Logger;
-
   @Post("/login")
   async login(@Body() params: UserLoginDto) {
     const result = await this.userService.login(params);
     if (result) {
+      // 配置token
       const token = await this.jwtService.signAsync({
         user: {
           id: result.id,
         },
       });
+      console.log(token)
     }
   }
 }
