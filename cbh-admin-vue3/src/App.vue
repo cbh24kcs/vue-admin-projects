@@ -10,6 +10,9 @@ const globalConfig = {
   //   }
   // },
 }
+
+
+
 </script>
 
 <template>
