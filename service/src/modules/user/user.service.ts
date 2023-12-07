@@ -17,12 +17,12 @@ export class UserService {
     });
     console.log(result);
     if (!result) {
-      throw new HttpException({ code: "", data: null, msg: "用户不存在" }, 200);
+      throw new Error("用户不存在");
     }
 
     // 密码其实不应该明文入库，先暂时这么写
     if (result.password !== params.password) {
-      throw new HttpException({ code: "", data: null, msg: "用户密码有误" }, 200);
+      throw new Error("用户密码有误");
     }
 
     return result;

@@ -6,6 +6,7 @@ import { join } from "path";
 // swagger-ui-express @nestjs/swagger nestjs-knife4j
 import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
 import { knife4jSetup } from "nestjs-knife4j";
+import { LoggingInterceptor } from "./common/interceptor/response.interceptor";
 
 const host = "http://127.0.0.1";
 const port = 3000;
@@ -48,6 +49,8 @@ async function bootstrap() {
       },
     ],
   });
+
+  app.useGlobalInterceptors(new LoggingInterceptor());
 
   await app.listen(port, () => {
     console.log(`服务启动成功, ${host}:${port}`);

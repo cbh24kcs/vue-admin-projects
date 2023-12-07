@@ -1,9 +1,10 @@
-import { Body, Controller, Inject, Post, ValidationPipe } from "@nestjs/common";
+import { Body, Controller, HttpException, Inject, Post, ValidationPipe } from "@nestjs/common";
 import { Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
 import { UserLoginDto } from "./dto/login-user.dto";
 import { UserService } from "./user.service";
 import { JwtService } from "@nestjs/jwt";
+import { R } from "src/utils/R.vo";
 
 @Controller("user")
 export class UserController {
@@ -16,12 +17,16 @@ export class UserController {
 
   @Post("/login")
   async login(@Body(ValidationPipe) params: UserLoginDto) {
-    const result = await this.userService.login(params);
-    if (result) {
-      //配置token
-      const token = await this.jwtService.signAsync({ user: { id: result.id } });
-
-      return { code: "0", data: { token }, msg: "登录成功" };
+    try {
+      const result = await this.userService.login(params);
+      if (result) {
+        //配置token
+        const token = await this.jwtService.signAsync({ user: { id: result.id } });
+        // return { code: "0", data: { token }, msg: "登录成功" };
+        return R.ok({ data: token });
+      }
+    } catch (err) {
+      return R.error({ data: err.stack, msg: err.msg });
     }
   }
 }
