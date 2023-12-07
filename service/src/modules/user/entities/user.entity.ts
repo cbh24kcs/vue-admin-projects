@@ -21,6 +21,6 @@ export class User {
   @Column({ comment: "密码" })
   password: string;
 
-  @Column({ comment: "密码" })
+  @Column({ comment: "锁" })
   lock: number;
 }

@@ -14,7 +14,7 @@ import { JwtModule } from "@nestjs/jwt";
       port: 9898,
       username: "root",
       password: "root",
-      database: "admin",
+      database: "cbh_admin",
       synchronize: false, // 数据库同步
       logging: true, // 打印日志
       entities: [`${__dirname}/**/*.entity{.ts,.js}`],
