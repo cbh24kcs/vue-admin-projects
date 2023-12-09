@@ -2,6 +2,8 @@ import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import { NestExpressApplication } from "@nestjs/platform-express";
 import { join } from "path";
+import { ValidationError, ValidationPipe } from "@nestjs/common";
+import { CustomValidationException } from "./common/exception/custom-validation.exception";
 
 // swagger-ui-express @nestjs/swagger nestjs-knife4j
 import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
@@ -57,6 +59,22 @@ async function bootstrap() {
   });
 
   app.useGlobalInterceptors(new LoggingInterceptor(logger));
+
+  //数据校验管道
+  app.useGlobalPipes(
+    new ValidationPipe({
+      exceptionFactory: (errors: ValidationError[] = []) => {
+        return new CustomValidationException(
+          errors.map(item => {
+            let name = item.property;
+            let value = item.value;
+            let constraintsStr = Object.values(item.constraints).join(",");
+            return { name, value, msg: constraintsStr };
+          })
+        );
+      },
+    })
+  );
 
   await app.listen(port, () => {
     console.log(`服务启动成功, ${host}:${port}`);
