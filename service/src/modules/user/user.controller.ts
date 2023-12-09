@@ -1,4 +1,4 @@
-import { Body, Controller, HttpException, Inject, Post, ValidationPipe } from "@nestjs/common";
+import { Body, Controller, HttpException, Inject, Logger, Post, ValidationPipe } from "@nestjs/common";
 import { Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
 import { UserLoginDto } from "./dto/login-user.dto";
@@ -15,8 +15,15 @@ export class UserController {
   @Inject()
   private jwtService: JwtService;
 
+  @Inject()
+  private logger: Logger;
+
   @Post("/login")
   async login(@Body(ValidationPipe) params: UserLoginDto) {
+    this.logger.log("logger -- log");
+    this.logger.debug("logger -- debug");
+    this.logger.error("logger -- error");
+
     try {
       const result = await this.userService.login(params);
       if (result) {

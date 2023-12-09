@@ -1,11 +1,13 @@
-import { Module } from "@nestjs/common";
+import { Module, Logger, Global } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { UserModule } from "./modules/user/user.module";
 import { MenuModule } from "./modules/menu/menu.module";
+
 import { JwtModule } from "@nestjs/jwt";
 
+@Global()
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -36,6 +38,7 @@ import { JwtModule } from "@nestjs/jwt";
     MenuModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, Logger],
+  exports: [Logger],
 })
 export class AppModule {}
