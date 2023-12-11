@@ -17,6 +17,8 @@ export class UserController {
   @Inject()
   private jwtService: JwtService;
 
+  @Inject()
+  private logger: Logger
 
   @Post("/login")
   async login(@Body(ValidationPipe) params: UserLoginDto) {
@@ -36,7 +38,8 @@ export class UserController {
   @Post("/register")
   async register(@Body(ValidationPipe) params: UserRegisterDto) {
     try {
-      await this.userService.register(params);
+      await this.userService.register(params);  
+      return R.success({ data: null, msg: "注册成功" });
     } catch (err) {
       return R.error({ data: null, msg: err.message });
     }

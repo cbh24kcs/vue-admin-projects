@@ -1,6 +1,6 @@
-import * as crypto from "crypto"; //node内置模块
+import * as crypto from "crypto"; //node内置加密模块
 
-import { Inject, Injectable, Logger } from "@nestjs/common";
+import { HttpException, Inject, Injectable, Logger } from "@nestjs/common";
 
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
@@ -29,8 +29,7 @@ export class UserService {
       throw new Error("用户不存在");
     }
 
-    // 密码其实不应该明文入库，先暂时这么写
-    if (result.password !== params.password) {
+    if (result.password !== md5(params.password)) {
       throw new Error("用户密码有误");
     }
 
@@ -49,13 +48,13 @@ export class UserService {
     const user = new User();
     user.account = params.account;
     user.password = md5(params.password);
-    // user.lock = 0;
+    user.lock = 0;
 
     try {
       await this.userRepository.save(user);
     } catch (e) {
       this.logger.error(e.message);
-      throw new Error("注册失败");
+      throw new HttpException("注册失败", 500);
     }
   }
 }

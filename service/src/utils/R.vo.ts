@@ -11,7 +11,7 @@ export class R {
     return {
       data,
       msg: msg || "操作失败",
-      code: code || 500,
+      code: code || 400,
     };
   }
   
