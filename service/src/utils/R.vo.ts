@@ -1,5 +1,5 @@
 export class R {
-  static ok({ data, msg }: { data: any; msg?: string }) {
+  static success({ data, msg }: { data: any; msg?: string }) {
     return {
       code: 0,
       data,
@@ -14,7 +14,8 @@ export class R {
       code: code || 500,
     };
   }
-
+  
+  // 函数重载写法
   //   static error(error: any, code: number, msg: string): object;
   //   static error(error: any, msg: string): object;
   //   static error(a: any, b: any, c?: any): object {

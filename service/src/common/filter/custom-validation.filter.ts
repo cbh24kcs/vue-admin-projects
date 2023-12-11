@@ -11,6 +11,7 @@ import { CustomValidationException } from "../exception/custom-validation.except
 
 @Catch(CustomValidationException)
 export class CustomValidationExceptionFilter implements ExceptionFilter {
+  
   constructor(private logger: LoggerService) {}
 
   catch(exception: BadRequestException, host: ArgumentsHost): any {

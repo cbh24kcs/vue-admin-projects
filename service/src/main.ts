@@ -5,7 +5,6 @@ import { WinstonLogger, WinstonModule } from "nest-winston";
 import { AppModule } from "./app.module";
 import { CustomValidationException } from "./common/exception/custom-validation.exception";
 import { CustomValidationExceptionFilter } from "./common/filter/custom-validation.filter";
-import { LoggingInterceptor } from "./common/interceptor/response.interceptor";
 import { NestExpressApplication } from "@nestjs/platform-express";
 import { NestFactory } from "@nestjs/core";
 import { join } from "path";
@@ -13,10 +12,6 @@ import { knife4jSetup } from "nestjs-knife4j";
 import { winstonLogger } from "./core/logger";
 
 // swagger-ui-express @nestjs/swagger nestjs-knife4j
-
-
-
-
 
 
 const host = "http://127.0.0.1";
@@ -54,6 +49,7 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup("api", app, document);
+
   knife4jSetup(app, {
     urls: [
       {
@@ -65,7 +61,6 @@ async function bootstrap() {
     ],
   });
 
-  app.useGlobalInterceptors(new LoggingInterceptor(logger));
 
   //数据校验管道
   app.useGlobalPipes(
