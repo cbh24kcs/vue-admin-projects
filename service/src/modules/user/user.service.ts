@@ -8,6 +8,7 @@ import { User } from "./entities/user.entity";
 import { UserLoginDto } from "./dto/login-user.dto";
 import { UserRegisterDto } from "./dto/register-user.dto";
 
+//加密工具函数
 function md5(str: string) {
   const hash = crypto.createHash("md5").update(str).digest("hex");
   return hash;
@@ -15,6 +16,7 @@ function md5(str: string) {
 
 @Injectable()
 export class UserService {
+  
   @InjectRepository(User)
   private userRepository: Repository<User>;
 

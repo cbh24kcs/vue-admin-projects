@@ -3,8 +3,10 @@ import { ValidationError, ValidationPipe } from "@nestjs/common";
 import { WinstonLogger, WinstonModule } from "nest-winston";
 
 import { AppModule } from "./app.module";
+import { AuthGuard } from "./common/guard/auth.guard";
 import { CustomValidationException } from "./common/exception/custom-validation.exception";
 import { CustomValidationExceptionFilter } from "./common/filter/custom-validation.filter";
+import { JwtService } from "@nestjs/jwt";
 import { NestExpressApplication } from "@nestjs/platform-express";
 import { NestFactory } from "@nestjs/core";
 import { join } from "path";
@@ -12,7 +14,6 @@ import { knife4jSetup } from "nestjs-knife4j";
 import { winstonLogger } from "./core/logger";
 
 // swagger-ui-express @nestjs/swagger nestjs-knife4j
-
 
 const host = "http://127.0.0.1";
 const port = 3000;
@@ -61,7 +62,6 @@ async function bootstrap() {
     ],
   });
 
-
   //数据校验管道
   app.useGlobalPipes(
     new ValidationPipe({
@@ -77,6 +77,8 @@ async function bootstrap() {
       },
     })
   );
+
+  app.useGlobalGuards(new AuthGuard())
 
   app.useGlobalFilters(new CustomValidationExceptionFilter(logger));
 

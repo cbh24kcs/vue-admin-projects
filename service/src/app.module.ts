@@ -1,11 +1,13 @@
-import { Module, Logger, Global } from "@nestjs/common";
+import { Global, Logger, Module } from "@nestjs/common";
+import { JwtModule, JwtService } from "@nestjs/jwt";
+
+import { APP_GUARD } from "@nestjs/core";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
+import { AuthGuard } from "./common/guard/auth.guard";
+import { MenuModule } from "./modules/menu/menu.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { UserModule } from "./modules/user/user.module";
-import { MenuModule } from "./modules/menu/menu.module";
-
-import { JwtModule } from "@nestjs/jwt";
 
 @Global()
 @Module({
@@ -38,7 +40,14 @@ import { JwtModule } from "@nestjs/jwt";
     MenuModule,
   ],
   controllers: [AppController],
-  providers: [AppService, Logger],
+  providers: [
+    AppService,
+    Logger,
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+  ],
   exports: [Logger],
 })
 export class AppModule {}
