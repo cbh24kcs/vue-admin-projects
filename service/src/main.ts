@@ -1,16 +1,23 @@
-import { NestFactory } from "@nestjs/core";
-import { AppModule } from "./app.module";
-import { NestExpressApplication } from "@nestjs/platform-express";
-import { join } from "path";
+import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { ValidationError, ValidationPipe } from "@nestjs/common";
+import { WinstonLogger, WinstonModule } from "nest-winston";
+
+import { AppModule } from "./app.module";
 import { CustomValidationException } from "./common/exception/custom-validation.exception";
+import { CustomValidationExceptionFilter } from "./common/filter/custom-validation.filter";
+import { LoggingInterceptor } from "./common/interceptor/response.interceptor";
+import { NestExpressApplication } from "@nestjs/platform-express";
+import { NestFactory } from "@nestjs/core";
+import { join } from "path";
+import { knife4jSetup } from "nestjs-knife4j";
+import { winstonLogger } from "./core/logger";
 
 // swagger-ui-express @nestjs/swagger nestjs-knife4j
-import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
-import { knife4jSetup } from "nestjs-knife4j";
-import { LoggingInterceptor } from "./common/interceptor/response.interceptor";
-import { winstonLogger } from "./core/logger";
-import { WinstonLogger, WinstonModule } from "nest-winston";
+
+
+
+
+
 
 const host = "http://127.0.0.1";
 const port = 3000;
@@ -75,6 +82,8 @@ async function bootstrap() {
       },
     })
   );
+
+  app.useGlobalFilters(new CustomValidationExceptionFilter(logger));
 
   await app.listen(port, () => {
     console.log(`服务启动成功, ${host}:${port}`);
