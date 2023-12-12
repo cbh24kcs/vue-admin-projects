@@ -7,11 +7,11 @@ import {
   HttpStatus,
   LoggerService,
 } from "@nestjs/common";
+
 import { CustomValidationException } from "../exception/custom-validation.exception";
 
 @Catch(CustomValidationException)
 export class CustomValidationExceptionFilter implements ExceptionFilter {
-  
   constructor(private logger: LoggerService) {}
 
   catch(exception: BadRequestException, host: ArgumentsHost): any {
@@ -27,7 +27,7 @@ export class CustomValidationExceptionFilter implements ExceptionFilter {
 
     // 响应错误信息
     response.status(httpStatus).json({
-      code: `HTTP_${httpStatus}`,
+      code: "400",
       msg: "参数校验未通过",
       data: exception.getResponse(),
     });

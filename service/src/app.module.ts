@@ -43,10 +43,10 @@ import { UserModule } from "./modules/user/user.module";
   providers: [
     AppService,
     Logger,
-    {
-      provide: APP_GUARD,
-      useClass: AuthGuard,
-    },
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: AuthGuard,
+    // },
   ],
   exports: [Logger],
 })

@@ -1,5 +1,7 @@
-import * as winston from "winston";
 import "winston-daily-rotate-file";
+
+import * as winston from "winston";
+
 import { utilities } from "nest-winston";
 
 const transports = [];
@@ -38,7 +40,5 @@ transports.push(
 if(process.env.NODE_ENV === 'production') {
 
 }
-
-
 
 export const winstonLogger = winston.createLogger({ transports });

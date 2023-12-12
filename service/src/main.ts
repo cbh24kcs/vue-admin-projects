@@ -78,7 +78,7 @@ async function bootstrap() {
     })
   );
 
-  app.useGlobalGuards(new AuthGuard())
+  // app.useGlobalGuards(new AuthGuard())
 
   app.useGlobalFilters(new CustomValidationExceptionFilter(logger));
 
