@@ -1,4 +1,4 @@
-import { Global, Logger, Module } from "@nestjs/common";
+import { Global, Logger, MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
 import { JwtModule, JwtService } from "@nestjs/jwt";
 
 import { APP_GUARD } from "@nestjs/core";
@@ -8,6 +8,7 @@ import { AuthGuard } from "./common/guard/auth.guard";
 import { MenuModule } from "./modules/menu/menu.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { UserModule } from "./modules/user/user.module";
+import { jwtMiddleware } from "./middleware/jwt.middleware";
 
 @Global()
 @Module({
@@ -50,4 +51,8 @@ import { UserModule } from "./modules/user/user.module";
   ],
   exports: [Logger],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(jwtMiddleware).forRoutes("*");
+  }
+}

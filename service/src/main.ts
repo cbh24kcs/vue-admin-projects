@@ -4,6 +4,7 @@ import { WinstonLogger, WinstonModule } from "nest-winston";
 
 import { AppModule } from "./app.module";
 import { AuthGuard } from "./common/guard/auth.guard";
+import { BusinessErrorExceptionFilter } from "./common/filter/business-error.filter";
 import { CustomValidationException } from "./common/exception/custom-validation.exception";
 import { CustomValidationExceptionFilter } from "./common/filter/custom-validation.filter";
 import { JwtService } from "@nestjs/jwt";
@@ -81,6 +82,8 @@ async function bootstrap() {
   // app.useGlobalGuards(new AuthGuard())
 
   app.useGlobalFilters(new CustomValidationExceptionFilter(logger));
+
+  app.useGlobalFilters(new BusinessErrorExceptionFilter());
 
   await app.listen(port, () => {
     console.log(`服务启动成功, ${host}:${port}`);
