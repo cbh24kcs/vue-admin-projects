@@ -14,6 +14,9 @@ jobs:
       - name: 拉代码
         uses: actions/checkout@master
 
+      - name: PWD
+        run: pwd && ll
+
       - name: 配置一个nodejs环境
         uses: actions/setup-node@v4
         with:
