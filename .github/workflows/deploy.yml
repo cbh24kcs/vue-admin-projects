@@ -19,17 +19,23 @@ jobs:
         with:
           token: ${{ secrets.GH_DOTCOM_TOKEN }}
           node-version: 16
-        run: cd service
-        run: npm install
-        run: npm run build
 
       - name: 把构建好的代码发到服务器
         uses: garygrossgarten/github-action-scp@release
         with:
-          local: service/dist
-          remote: /root/cbh/vue-admin-projects/nest-service
+          local: service
+          remote: /root/cbh/vue-admin-projects/service
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
           concurrency: 20
 
+      - name: 服务器脚本执行
+        uses: appleboy/ssh-action
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.PASSWORD }}
+          script:
+            ls
+            pwd
