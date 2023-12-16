@@ -36,7 +36,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
-          script:
+          script: |
             cd /root/cbh/vue-admin-projects/service
             docker build -t cbh-admin-nest:0.0.1 .
             docker stop cbh-admin-nest
