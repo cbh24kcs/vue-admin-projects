@@ -19,15 +19,18 @@ jobs:
         with:
           token: ${{ secrets.GH_DOTCOM_TOKEN }}
           node-version: 16
-
-      # - name: Nest.js项目构建
+        script:
+          cd service
+          npm install
+          npm run build
 
       - name: 把构建好的代码发到服务器
         uses: garygrossgarten/github-action-scp@release
         with:
-          local: service
+          local: service/dist
           remote: /root/cbh/vue-admin-projects/nest-service
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
           concurrency: 20
+
