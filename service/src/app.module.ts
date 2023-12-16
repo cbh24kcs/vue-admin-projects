@@ -53,6 +53,6 @@ import { jwtMiddleware } from "./middleware/jwt.middleware";
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(jwtMiddleware).forRoutes("*");
+    // consumer.apply(jwtMiddleware).forRoutes("*");
   }
 }
