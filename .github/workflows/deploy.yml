@@ -8,14 +8,13 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: bing
 
     steps: 
       - name: 拉代码
-        environment: bing
         uses: actions/checkout@master
 
       - name: 配置一个nodejs环境
-        environment: bing
         uses: actions/setup-node@v4
         with:
           token: ${{ secrets.GH_DOTCOM_TOKEN }}
@@ -24,7 +23,6 @@ jobs:
       # - name: Nest.js项目构建
 
       - name: 把构建好的代码发到服务器
-        environment: bing
         uses: garygrossgarten/github-action-scp@release
         with:
           local: vue-admin-projects/service
