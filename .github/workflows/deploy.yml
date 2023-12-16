@@ -20,7 +20,14 @@ jobs:
           token: ${{ secrets.GH_DOTCOM_TOKEN }}
           node-version: 16
 
-      - run: rm -rf /root/cbh/vue-admin-projects/service
+      - name: 执行服务器脚本：删除原有代码文件
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
+          script:
+            rm -rf /root/cbh/vue-admin-projects/service
 
       - name: 把代码发到服务器
         uses: garygrossgarten/github-action-scp@release
@@ -32,7 +39,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           concurrency: 20
 
-      - name: 服务器脚本执行
+      - name: 执行服务器脚本：构建Docker镜像
         uses: appleboy/ssh-action@v0.1.6
         with:
           host: ${{ secrets.HOST }}
