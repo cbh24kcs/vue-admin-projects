@@ -14,12 +14,6 @@ jobs:
       - name: 拉代码
         uses: actions/checkout@master
 
-      - name: 配置一个nodejs环境
-        uses: actions/setup-node@v4
-        with:
-          token: ${{ secrets.GH_DOTCOM_TOKEN }}
-          node-version: 16
-
       - name: 把代码发到服务器
         uses: garygrossgarten/github-action-scp@release
         with:
