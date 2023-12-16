@@ -5,11 +5,13 @@ import { BusinessErrorException } from "../exception/business-error.excpetion";
 @Catch(BusinessErrorException)
 export class BusinessErrorExceptionFilter implements ExceptionFilter {
   catch(exception: BadRequestException, host: ArgumentsHost): any {
-    console.log("test");
+    
     const ctx = host.switchToHttp();
+
     // 拿到响应和请求对象
     const request = ctx.getRequest();
     const response = ctx.getResponse();
+    
     // const status = exception.getStatus();
     const httpStatus = exception instanceof HttpException ? exception.getStatus() : HttpStatus.INTERNAL_SERVER_ERROR;
 

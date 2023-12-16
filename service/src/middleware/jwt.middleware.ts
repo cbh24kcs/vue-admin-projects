@@ -20,11 +20,10 @@ export class jwtMiddleware implements NestMiddleware {
 
     const token = bearer[1]
     try {
+      //数据后面再塞到上下文
       const payload = await this.jwtService.verifyAsync(token);
-      console.log("--------.",payload);
       
     } catch (err) {
-      console.log(err)
       throw new BusinessErrorException("无效令牌，请重新登陆")
     }
     next()
