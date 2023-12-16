@@ -20,6 +20,8 @@ jobs:
           token: ${{ secrets.GH_DOTCOM_TOKEN }}
           node-version: 16
 
+      - run: rm -rf /root/cbh/vue-admin-projects/service
+
       - name: 把代码发到服务器
         uses: garygrossgarten/github-action-scp@release
         with:
