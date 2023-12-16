@@ -31,7 +31,7 @@ jobs:
           concurrency: 20
 
       - name: 服务器脚本执行
-        uses: appleboy/ssh-action
+        uses: appleboy/ssh-action@v0.1.6
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
