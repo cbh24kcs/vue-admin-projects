@@ -9,7 +9,7 @@ ADD ./ /var/publish/nest
 WORKDIR /var/publish/nest
  
 RUN npm install
-RUN npm build
+RUN npm run build
  
 EXPOSE 9090
  
