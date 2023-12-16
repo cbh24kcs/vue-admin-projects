@@ -37,4 +37,9 @@ jobs:
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
           script:
-            pwd
+            cd /root/cbh/vue-admin-projects/service
+            docker build -t cbh-admin-nest:0.0.1 .
+            docker stop cbh-admin-nest
+            docker rm cbh-admin-nest
+            docker run -d -p 9090:3000 --name cbh-admin-nest cbh-admin-nest:0.0.1
+
