@@ -2,16 +2,11 @@ name: Deploy to Bing Server
 
 on:
   push:
-    branches:
-      - bing
+    branches: [bing]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    steps:
-      - name: test
-        script:
-          ls
 
 
