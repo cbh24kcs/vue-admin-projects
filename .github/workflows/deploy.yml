@@ -10,8 +10,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: test
-        script:
-          ls
+      - name: 拉代码
+        uses: actions/checkout@bing
 
+      - name: 配置一个nodejs环境
+        uses: actions/setup-node@v4
+        with:
+          token: ${{ secrets.GH_DOTCOM_TOKEN }}
+          node-version: 16
 
+      # - name: Nest.js项目构建
+
+      # - name: 把构建好的代码发到服务器
+      #   uses: garygrossgarten/github-action-scp@release
+      #   with:
+      #     local: nebula-website
+      #     remote: /home/vesoft/nebula-website
+      #     host: ${{ secrets.HOST }}
+      #     username: vesoft
+      #     password: ${{ secrets.PASSWORD }}
+      #     concurrency: 20
