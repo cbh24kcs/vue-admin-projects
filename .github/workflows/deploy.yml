@@ -2,11 +2,39 @@ name: Deploy to Bing Server
 
 on:
   push:
-    branches: [bing]
+    branches:
+      - bing
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: bing
 
+    steps: 
+      - name: 拉代码
+        uses: actions/checkout@master
 
+      - name: 把代码发到服务器
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local: service
+          remote: /root/cbh/vue-admin-projects/service
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
+          concurrency: 20
+
+      - name: 执行服务器脚本：构建Docker镜像
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            cd /root/cbh/vue-admin-projects/service
+            docker stop cbh-admin-nest
+            docker rm cbh-admin-nest
+            docker rmi cbh-admin-nest:0.0.1
+            docker build -t cbh-admin-nest:0.0.1 .
+            docker run -d -p 9090:3000 --name cbh-admin-nest cbh-admin-nest:0.0.1
 
