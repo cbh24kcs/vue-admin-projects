@@ -20,7 +20,7 @@ jobs:
           token: ${{ secrets.GH_DOTCOM_TOKEN }}
           node-version: 16
 
-      - name: 把构建好的代码发到服务器
+      - name: 把代码发到服务器
         uses: garygrossgarten/github-action-scp@release
         with:
           local: service
@@ -35,7 +35,6 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
-          key: ${{ secrets.PASSWORD }}
+          password: ${{ secrets.PASSWORD }}
           script:
-            ls
             pwd
