@@ -21,12 +21,12 @@ jobs:
 
       # - name: Nest.js项目构建
 
-      # - name: 把构建好的代码发到服务器
-      #   uses: garygrossgarten/github-action-scp@release
-      #   with:
-      #     local: nebula-website
-      #     remote: /home/vesoft/nebula-website
-      #     host: ${{ secrets.HOST }}
-      #     username: vesoft
-      #     password: ${{ secrets.PASSWORD }}
-      #     concurrency: 20
+      - name: 把构建好的代码发到服务器
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local: vue-admin-projects/service
+          remote: /root/cbh/vue-admin-projects/nest-service
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
+          concurrency: 20
