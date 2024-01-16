@@ -1,17 +1,16 @@
 import { ArgumentsHost, BadRequestException, Catch, ExceptionFilter, HttpException, HttpStatus } from "@nestjs/common";
 
-import { BusinessErrorException } from "../exception/business-error.excpetion";
+import { CommonErrorException } from "../exception/common-error.excpetion";
 
-@Catch(BusinessErrorException)
-export class BusinessErrorExceptionFilter implements ExceptionFilter {
+@Catch(CommonErrorException)
+export class CommonErrorExceptionFilter implements ExceptionFilter {
   catch(exception: BadRequestException, host: ArgumentsHost): any {
-    
     const ctx = host.switchToHttp();
 
     // 拿到响应和请求对象
     const request = ctx.getRequest();
     const response = ctx.getResponse();
-    
+
     // const status = exception.getStatus();
     const httpStatus = exception instanceof HttpException ? exception.getStatus() : HttpStatus.INTERNAL_SERVER_ERROR;
 

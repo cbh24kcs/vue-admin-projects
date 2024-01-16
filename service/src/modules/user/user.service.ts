@@ -7,6 +7,8 @@ import { Repository } from "typeorm";
 import { User } from "./entities/user.entity";
 import { UserLoginDto } from "./dto/login-user.dto";
 import { UserRegisterDto } from "./dto/register-user.dto";
+import { FindUsersDto } from "./dto/find-users.dto";
+import { CommonErrorException } from "src/common/exception/common-error.excpetion";
 
 //加密工具函数
 function md5(str: string) {
@@ -16,7 +18,6 @@ function md5(str: string) {
 
 @Injectable()
 export class UserService {
-  
   @InjectRepository(User)
   private userRepository: Repository<User>;
 
@@ -58,5 +59,22 @@ export class UserService {
       this.logger.error(e.message);
       throw new HttpException("注册失败", 500);
     }
+  }
+
+  async findUsers(params: FindUsersDto) {
+    const condition: Record<string, any> = {};
+
+    if (params.needPaging === 1) {
+      if (!params.pageNo && !params.pageSize) {
+        throw new Error("未传入分页参数");
+      }
+    }
+
+    const skipCount = params.pageNo;
+
+    const [user, totalCount] = await this.userRepository.findAndCount({
+      select: ["id", "name", "email", "telephone"], //表示必须选择对象的哪些属性
+      skip: 123,
+    });
   }
 }

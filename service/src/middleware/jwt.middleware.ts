@@ -1,7 +1,7 @@
 import { Inject, Injectable, NestMiddleware } from "@nestjs/common";
 import { NextFunction, Request, Response } from "express";
 
-import { BusinessErrorException } from "src/common/exception/business-error.excpetion";
+import { CommonErrorException } from "src/common/exception/common-error.excpetion";
 import { JwtService } from "@nestjs/jwt";
 
 @Injectable()
@@ -15,17 +15,16 @@ export class jwtMiddleware implements NestMiddleware {
     const bearer = authorization.split(" ");
 
     if (!bearer || bearer.length < 2) {
-      throw new BusinessErrorException("登录token错误");
+      throw new CommonErrorException("登录token错误");
     }
 
-    const token = bearer[1]
+    const token = bearer[1];
     try {
       //数据后面再塞到上下文
       const payload = await this.jwtService.verifyAsync(token);
-      
     } catch (err) {
-      throw new BusinessErrorException("无效令牌，请重新登陆")
+      throw new CommonErrorException("无效令牌，请重新登陆");
     }
-    next()
+    next();
   }
 }

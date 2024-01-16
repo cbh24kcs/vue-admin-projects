@@ -1,4 +1,15 @@
-import { Body, Controller, HttpException, Inject, Logger, Post, ValidationPipe } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  Get,
+  HttpException,
+  Inject,
+  Logger,
+  Param,
+  Post,
+  Query,
+  ValidationPipe,
+} from "@nestjs/common";
 import { Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
 import { UserLoginDto } from "./dto/login-user.dto";
@@ -7,6 +18,7 @@ import { UserService } from "./user.service";
 import { JwtService } from "@nestjs/jwt";
 import { R } from "src/utils/R.vo";
 import { isErrored } from "stream";
+import { FindUsersDto } from "./dto/find-users.dto";
 
 @Controller("user")
 export class UserController {
@@ -18,7 +30,7 @@ export class UserController {
   private jwtService: JwtService;
 
   @Inject()
-  private logger: Logger
+  private logger: Logger;
 
   @Post("/login")
   async login(@Body(ValidationPipe) params: UserLoginDto) {
@@ -38,10 +50,13 @@ export class UserController {
   @Post("/register")
   async register(@Body(ValidationPipe) params: UserRegisterDto) {
     try {
-      await this.userService.register(params);  
+      await this.userService.register(params);
       return R.success({ data: null, msg: "注册成功" });
     } catch (err) {
       return R.error({ data: null, msg: err.message });
     }
   }
+
+  @Get("/getList")
+  async getList(@Query() params: FindUsersDto) {}
 }

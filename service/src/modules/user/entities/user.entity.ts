@@ -21,6 +21,15 @@ export class User {
   @Column({ comment: "密码" })
   password: string;
 
+  @Column({ comment: "用户名" })
+  name: string;
+
+  @Column({ comment: "电话" })
+  telephone: string;
+
+  @Column({ comment: "邮箱" })
+  email: string;
+
   @Column({ comment: "锁" })
   lock: number;
 }
