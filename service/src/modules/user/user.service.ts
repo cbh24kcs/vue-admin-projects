@@ -7,8 +7,6 @@ import { Repository } from "typeorm";
 import { User } from "./entities/user.entity";
 import { UserLoginDto } from "./dto/login-user.dto";
 import { UserRegisterDto } from "./dto/register-user.dto";
-import { FindUsersDto } from "./dto/find-users.dto";
-import { CommonErrorException } from "src/common/exception/common-error.excpetion";
 
 //加密工具函数
 function md5(str: string) {
@@ -64,9 +62,9 @@ export class UserService {
   async findUsers(params: FindUsersDto) {
     const condition: Record<string, any> = {};
 
-    if (params.needPaging === 1) {
+    if (params.needPaging) {
       if (!params.pageNo && !params.pageSize) {
-        throw new Error("未传入分页参数");
+        throw new Error("分页参数");
       }
     }
 
