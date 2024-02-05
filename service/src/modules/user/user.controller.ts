@@ -1,10 +1,12 @@
 import {
   Body,
   Controller,
+  DefaultValuePipe,
   Get,
   Inject,
   Logger,
   Param,
+  ParseBoolPipe,
   ParseIntPipe,
   Post,
   Query,
@@ -19,6 +21,7 @@ import { JwtService } from "@nestjs/jwt";
 import { R } from "src/utils/R.vo";
 import { isErrored } from "stream";
 import { query } from "express";
+import { FindUsersDto } from "./dto/find-users.dto";
 
 @Controller("user")
 export class UserController {
@@ -57,19 +60,14 @@ export class UserController {
     }
   }
 
-  @Get("/getList")
-  async getList(
-    @Query("name") name: string,
-    @Query("needPage", ParseIntPipe) needPage: number,
-    @Query("pageNo", ParseIntPipe) pageNo: number,
-    @Query("pageSize", ParseIntPipe) pageSize: number
-  ) {
-    console.log(pageNo);
-    // try {
-    //   await this.userService.findUsers(params)
-    //   // return R.success({data})
-    // } catch (err) {
-    //   return R.error({ data: null, msg: err.message });
-    // }
+  @Post("/getList")
+  async getList(@Body() params: FindUsersDto) {
+    console.log(params)
+    try {
+      // await this.userService.findUsers(name,needPage,pageNo,pageSize)
+      // await this.userService.findUsers(name, needPage, pageNo, pageSize);
+    } catch (err) {
+      return R.error({ data: null, msg: err.message });
+    }
   }
 }

@@ -1,7 +1,7 @@
 import { PartialType } from "@nestjs/mapped-types";
 import { isString } from "class-validator";
-import { PagingDto } from "src/common/dto/paging.dto";
+import { Pagination } from "src/common/dto/pagination.dto";
 
-export class FindUsersDto extends PartialType(PagingDto) {
+export class FindUsersDto extends PartialType(Pagination) {
   name: string;
 }

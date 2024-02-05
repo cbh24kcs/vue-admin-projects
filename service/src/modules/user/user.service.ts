@@ -53,22 +53,24 @@ export class UserService {
 
     try {
       await this.userRepository.save(user);
-    } catch (e) {
+    } catch (e) { 
       this.logger.error(e.message);
       throw new HttpException("注册失败", 500);
     }
   }
 
-  async findUsers(params: FindUsersDto) {
+
+  async findUsers(name: string, needPage: number, pageNo: number, pageSize: number) {
     const condition: Record<string, any> = {};
 
-    if (params.needPaging) {
-      if (!params.pageNo && !params.pageSize) {
+
+    if (needPage === 1) {
+      if (!pageNo && !pageSize) {
         throw new Error("分页参数");
       }
     }
 
-    const skipCount = params.pageNo;
+    const skipCount = pageNo;
 
     const [user, totalCount] = await this.userRepository.findAndCount({
       select: ["id", "name", "email", "telephone"], //表示必须选择对象的哪些属性
