@@ -1,17 +1,4 @@
-import {
-  Body,
-  Controller,
-  DefaultValuePipe,
-  Get,
-  Inject,
-  Logger,
-  Param,
-  ParseBoolPipe,
-  ParseIntPipe,
-  Post,
-  Query,
-  ValidationPipe,
-} from "@nestjs/common";
+import { Body, Controller, Get, Inject, Logger, Post, ValidationPipe } from "@nestjs/common";
 import { Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
 import { UserLoginDto } from "./dto/login-user.dto";
@@ -62,7 +49,6 @@ export class UserController {
 
   @Post("/getList")
   async getList(@Body() params: FindUsersDto) {
-    console.log(params)
     try {
       // await this.userService.findUsers(name,needPage,pageNo,pageSize)
       // await this.userService.findUsers(name, needPage, pageNo, pageSize);
