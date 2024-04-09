@@ -77,4 +77,8 @@ export class UserService {
       skip: 123,
     });
   }
+
+  test(){
+    console.log("测试")
+  }
 }

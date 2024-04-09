@@ -9,6 +9,7 @@ import { MenuModule } from "./modules/menu/menu.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { UserModule } from "./modules/user/user.module";
 import { jwtMiddleware } from "./middleware/jwt.middleware";
+import { AuthModule } from './modules/auth/auth.module';
 
 @Global()
 @Module({
@@ -39,6 +40,7 @@ import { jwtMiddleware } from "./middleware/jwt.middleware";
     }),
     UserModule,
     MenuModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [

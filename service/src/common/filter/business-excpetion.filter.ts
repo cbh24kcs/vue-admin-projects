@@ -1,9 +1,9 @@
 import { ArgumentsHost, BadRequestException, Catch, ExceptionFilter, HttpException, HttpStatus } from "@nestjs/common";
 
-import { CommonErrorException } from "../exception/common-error.excpetion";
+import { BusinessException } from "../exception/business-error.excpetion";
 
-@Catch(CommonErrorException)
-export class CommonErrorExceptionFilter implements ExceptionFilter {
+@Catch(BusinessException)
+export class BusinessExceptionFilter implements ExceptionFilter {
   catch(exception: BadRequestException, host: ArgumentsHost): any {
     const ctx = host.switchToHttp();
 

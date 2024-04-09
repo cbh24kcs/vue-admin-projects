@@ -18,6 +18,7 @@ export class AuthGuard implements CanActivate {
   private jwtService: JwtService;
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
+    // 获取请求对象
     const request: Request = context.switchToHttp().getRequest();
 
     const authorization = request.header("authorization") || "";
@@ -35,6 +36,6 @@ export class AuthGuard implements CanActivate {
       throw new UnauthorizedException(R.error({ data: null, msg: "无效令牌，请重新登陆" }));
     }
 
-    return false;
+    return true;
   }
 }
