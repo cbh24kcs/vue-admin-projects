@@ -22,6 +22,29 @@ export class UserService {
   @Inject()
   private logger: Logger;
 
+
+  async createUser(){
+
+  }
+
+  async findUser(){
+    
+  }
+
+  async deleteUser(){
+
+  }
+
+  async updateUser(){
+
+  }
+
+
+  
+
+
+
+
   async login(params: UserLoginDto) {
     const result = await this.userRepository.findOneBy({
       account: params.account,
@@ -77,6 +100,8 @@ export class UserService {
       skip: 123,
     });
   }
+
+ 
 
   test(){
     console.log("测试")
