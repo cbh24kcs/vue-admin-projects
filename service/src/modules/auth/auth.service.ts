@@ -4,9 +4,12 @@ import { UserService } from "../user/user.service";
 @Injectable()
 export class AuthService {
   constructor(private userService: UserService) {}
-  async login() {
-    return this.userService.test()
+
+  async login(account: string, password: string) {
+    const res = await this.userService.findUser(account);
   }
 
-  async register() {}
+  async register(account: string, password: string) {
+    let res = await this.userService.createUser(account, password);
+  }
 }

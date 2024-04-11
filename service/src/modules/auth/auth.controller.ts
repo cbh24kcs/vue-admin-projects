@@ -7,13 +7,14 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Post("/login")
-  login(@Body(ValidationPipe) params: UserLoginDto) {
-    console.log("login");
-    return this.authService.login();
+  login(@Body(ValidationPipe) dto: UserLoginDto) {
+    const { account, password } = dto;
+    this.authService.login(account, password);
   }
 
   @Post("/register")
-  register() {
+  register(@Body(ValidationPipe) data: UserLoginDto) {
+    this.authService.register();
     console.log("register");
     return;
   }

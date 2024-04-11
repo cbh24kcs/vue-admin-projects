@@ -1,5 +1,3 @@
-import * as crypto from "crypto"; //node内置加密模块
-
 import { HttpException, Inject, Injectable, Logger } from "@nestjs/common";
 
 import { InjectRepository } from "@nestjs/typeorm";
@@ -7,43 +5,28 @@ import { Repository } from "typeorm";
 import { User } from "./entities/user.entity";
 import { UserLoginDto } from "./dto/login-user.dto";
 import { UserRegisterDto } from "./dto/register-user.dto";
-
-//加密工具函数
-function md5(str: string) {
-  const hash = crypto.createHash("md5").update(str).digest("hex");
-  return hash;
-}
+import { md5 } from "src/utils/encrypts";
 
 @Injectable()
 export class UserService {
-  @InjectRepository(User)
-  private userRepository: Repository<User>;
+  constructor(
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>
+  ) {}
 
-  @Inject()
-  private logger: Logger;
+  async createUser(account: string, password: string) {}
 
-
-  async createUser(){
-
+  async findUser(account: string) {
+    const res = await this.userRepository
+      .createQueryBuilder("user")
+      .where("user.account = :account", { account })
+      .getMany();
+    return res;
   }
 
-  async findUser(){
-    
-  }
+  async deleteUser() {}
 
-  async deleteUser(){
-
-  }
-
-  async updateUser(){
-
-  }
-
-
-  
-
-
-
+  async updateUser() {}
 
   async login(params: UserLoginDto) {
     const result = await this.userRepository.findOneBy({
@@ -76,16 +59,13 @@ export class UserService {
 
     try {
       await this.userRepository.save(user);
-    } catch (e) { 
-      this.logger.error(e.message);
+    } catch (e) {
       throw new HttpException("注册失败", 500);
     }
   }
 
-
   async findUsers(name: string, needPage: number, pageNo: number, pageSize: number) {
     const condition: Record<string, any> = {};
-
 
     if (needPage === 1) {
       if (!pageNo && !pageSize) {
@@ -99,11 +79,5 @@ export class UserService {
       select: ["id", "name", "email", "telephone"], //表示必须选择对象的哪些属性
       skip: 123,
     });
-  }
-
- 
-
-  test(){
-    console.log("测试")
   }
 }
