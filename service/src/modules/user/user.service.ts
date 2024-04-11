@@ -26,7 +26,9 @@ export class UserService {
 
   async deleteUser() {}
 
-  async updateUser() {}
+  async updateUser(name: string, nickName: string, phone: number, email: number) {
+    
+  }
 
   async login(params: UserLoginDto) {
     const result = await this.userRepository.findOneBy({
